@@ -40,8 +40,8 @@ namespace QLicense
             }
 
             //Get RSA key from certificate
-            X509Certificate2 cert = new X509Certificate2(certPrivateKeyData, certFilePwd);
-
+            X509Certificate2 cert = new X509Certificate2(certPrivateKeyData, certFilePwd, X509KeyStorageFlags.MachineKeySet | X509KeyStorageFlags.Exportable);
+            Console.WriteLine(cert.HasPrivateKey);
             RSA rsaKey = cert.GetRSAPrivateKey();
 
             //Sign the XML
